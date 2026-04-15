@@ -1,0 +1,90 @@
+# 🏨 Luxury Hotel Menu UI
+
+A modern **animated restaurant & hotel menu website** built using **HTML, CSS, and JavaScript**.
+
+---
+
+## ✨ Features
+
+* 🍽️ 15 Indian dishes with real images
+* 🎬 Smooth animations + 3D flip cards
+* 🌙 Luxury **dark hotel theme UI**
+* 🥦 Veg / 🍗 Non-Veg filter
+* 💰 Price filter system
+* 🛒 Add to Cart functionality
+* 📱 Fully responsive design
+
+---
+
+## 🚀 Live Demo
+
+👉 https://your-username.github.io/hotel-menu-ui/
+
+---
+
+## 📸 Screenshots
+
+### 🏠 Main UI
+
+![Menu Screenshot](screenshots/menu.png)
+
+### 🎴 Card Animation
+
+![Card Animation](screenshots/card.png)
+
+### 🔍 Filters
+
+![Filters](screenshots/filter.png)
+
+---
+
+## 🛠️ Technologies Used
+
+* HTML5
+* CSS3 (Animations + 3D Effects)
+* JavaScript (DOM + Filtering Logic)
+
+---
+
+## 📂 Project Structure
+
+```
+hotel-menu-ui/
+│── index.html
+│── screenshots/
+│   ├── menu.png
+│   ├── card.png
+│   └── filter.png
+│── README.md
+```
+
+---
+
+## ⚡ How to Run
+
+1. Clone the repo
+
+```
+git clone https://github.com/your-username/hotel-menu-ui.git
+```
+
+2. Open `index.html` in browser
+
+---
+
+## 💡 Future Improvements
+
+* 🛒 Full cart & checkout system
+* 📱 Mobile app UI
+* 🎵 Background music
+* 💎 Premium glassmorphism design
+
+---
+
+## 👨‍💻 Author
+
+Your Name
+
+---
+
+⭐ If you like this project, give it a star!
