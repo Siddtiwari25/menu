@@ -6,10 +6,9 @@ A modern **animated restaurant & hotel menu website** built using **HTML, CSS, a
 
 ## ✨ Features
 
-* 🍽️ 15 Indian dishes with real images
+* 🍽️ 10+ Indian dishes with real images
 * 🎬 Smooth animations + 3D flip cards
 * 🌙 Luxury **dark hotel theme UI**
-* 🥦 Veg / 🍗 Non-Veg filter
 * 💰 Price filter system
 * 🛒 Add to Cart functionality
 * 📱 Fully responsive design
@@ -67,24 +66,5 @@ hotel-menu-ui/
 ```
 git clone https://github.com/Siddtiwari25/menu/tree/main
 ```
-
-2. Open `index.html` in browser
-
----
-
-## 💡 Future Improvements
-
-* 🛒 Full cart & checkout system
-* 📱 Mobile app UI
-* 🎵 Background music
-* 💎 Premium glassmorphism design
-
----
-
-## 👨‍💻 Author
-
-Your Name
-
----
 
 ⭐ If you like this project, give it a star!
