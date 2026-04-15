@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Hotel  Menu</title>
+<title>Hotel Menu</title>
 <style>
 body {
   margin: 0;
@@ -27,7 +27,6 @@ h1 {
 .controls {
   text-align: center;
   margin-bottom: 20px;
-  animation: fadeIn 2s ease-in-out;
 }
 
 select {
@@ -115,7 +114,6 @@ button {
   color: black;
   border-radius: 5px;
   cursor: pointer;
-  transition: 0.3s;
 }
 
 button:hover {
@@ -130,13 +128,12 @@ button:hover {
   color: #fff;
   padding: 10px 15px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 </style>
 </head>
 <body>
 
-<h1> Hotel Menu</h1>
+<h1>Hotel Menu</h1>
 
 <div class="controls">
   <select id="categoryFilter">
@@ -167,13 +164,13 @@ const dishes = [
   {name:"Rogan Josh", type:"Mains", price:500, img:"photo/Rogan_Josh_Kashmiri.jpg"},
   {name:"Samosa", type:"Starter", price:50, img:"photo/samosa-recipe.jpg"},
   {name:"Pav Bhaji", type:"Starter", price:160, img:"photo/images (1).jpg"},
-  {name:"Malai chap", type:"Starter", price:400, img:"photo/malai-chaap-recipe-at-home.jpg"},
+  {name:"Malai Chaap", type:"Starter", price:400, img:"photo/malai-chaap-recipe-at-home.jpg"},
   {name:"Rajma Chawal", type:"Mains", price:140, img:"photo/rajma-chawal-1-500x500.jpg"},
   {name:"Kadhi Pakora", type:"Mains", price:180, img:"photo/images (2).jpg"},
   {name:"Aloo Paratha", type:"Starter", price:120, img:"photo/images (3).jpg"},
   {name:"Gulab Jamun", type:"Starter", price:100, img:"photo/download.jpg"},
-  {name:"Rasmalai", type:"Starter", price:120, img:"photo/Rosmalai).jpg"}
-    {name:"Tandoori roti", type:"Mains", price:120, img:"photo/tanduri.jpg"}
+  {name:"Rasmalai", type:"Starter", price:120, img:"photo/Rosmalai.jpg"},
+  {name:"Tandoori Roti", type:"Mains", price:120, img:"photo/tanduri.jpg"}
 ];
 
 let cart = 0;
@@ -186,12 +183,11 @@ function renderMenu(filteredDishes) {
   filteredDishes.forEach((dish, index) => {
     const card = document.createElement("div");
     card.className = "card";
-    card.style.animation = `fadeIn 0.5s ease forwards ${index * 0.1}s`;
 
     card.innerHTML = `
       <div class="card-inner">
         <div class="card-front">
-          <img src="${dish.img}">
+          <img src="${dish.img}" alt="${dish.name}">
           <h3>${dish.name}</h3>
           <p>₹${dish.price}</p>
         </div>
