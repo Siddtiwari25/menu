@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxury Hotel Dark Menu</title>
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #121212;
+  color: #f5f5f5;
+}
+
+h1 {
+  text-align: center;
+  padding: 20px;
+  letter-spacing: 2px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px);} 
+  to { opacity: 1; transform: translateY(0);} 
+}
+
+.controls {
+  text-align: center;
+  margin-bottom: 20px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+select {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin: 5px;
+  background: #1e1e1e;
+  color: white;
+}
+
+.menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background: #1e1e1e;
+  border-radius: 15px;
+  overflow: hidden;
+  perspective: 1000px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+  transition: transform 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.card-front img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.card:hover img {
+  transform: scale(1.1);
+}
+
+.card-front h3 {
+  text-align: center;
+}
+
+.card-front p {
+  text-align: center;
+  color: #bbb;
+}
+
+.card-back {
+  background: #2c2c2c;
+  color: #fff;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  background: #ff9800;
+  color: black;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ffc107;
+}
+
+.cart {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: #1e1e1e;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+</style>
+</head>
+<body>
+
+<h1>🏨 Luxury Hotel Menu</h1>
+
+<div class="controls">
+  <select id="categoryFilter">
+    <option value="all">All</option>
+    <option value="veg">Veg</option>
+    <option value="nonveg">Non-Veg</option>
+  </select>
+
+  <select id="priceFilter">
+    <option value="all">All Prices</option>
+    <option value="low">Below ₹200</option>
+    <option value="mid">₹200 - ₹400</option>
+    <option value="high">Above ₹400</option>
+  </select>
+</div>
+
+<div class="cart">🛒 Cart: <span id="cart-count">0</span></div>
+<div class="menu" id="menu"></div>
+
+<script>
+const dishes = [
+  {name:"Butter Chicken", type:"nonveg", price:450, img:"https://source.unsplash.com/300x200/?butter-chicken"},
+  {name:"Paneer Tikka", type:"veg", price:250, img:"https://source.unsplash.com/300x200/?paneer-tikka"},
+  {name:"Biryani", type:"nonveg", price:350, img:"https://source.unsplash.com/300x200/?biryani"},
+  {name:"Masala Dosa", type:"veg", price:150, img:"https://source.unsplash.com/300x200/?dosa"},
+  {name:"Chole Bhature", type:"veg", price:180, img:"https://source.unsplash.com/300x200/?chole-bhature"},
+  {name:"Dal Makhani", type:"veg", price:220, img:"https://source.unsplash.com/300x200/?dal"},
+  {name:"Rogan Josh", type:"nonveg", price:500, img:"https://source.unsplash.com/300x200/?rogan-josh"},
+  {name:"Samosa", type:"veg", price:50, img:"https://source.unsplash.com/300x200/?samosa"},
+  {name:"Pav Bhaji", type:"veg", price:160, img:"https://source.unsplash.com/300x200/?pav-bhaji"},
+  {name:"Tandoori Chicken", type:"nonveg", price:400, img:"https://source.unsplash.com/300x200/?tandoori"},
+  {name:"Rajma Chawal", type:"veg", price:140, img:"https://source.unsplash.com/300x200/?rajma"},
+  {name:"Kadhi Pakora", type:"veg", price:180, img:"https://source.unsplash.com/300x200/?kadhi"},
+  {name:"Aloo Paratha", type:"veg", price:120, img:"https://source.unsplash.com/300x200/?paratha"},
+  {name:"Gulab Jamun", type:"veg", price:100, img:"https://source.unsplash.com/300x200/?gulab-jamun"},
+  {name:"Rasmalai", type:"veg", price:120, img:"https://source.unsplash.com/300x200/?rasmalai"}
+];
+
+let cart = 0;
+
+const menu = document.getElementById("menu");
+const cartCount = document.getElementById("cart-count");
+
+function renderMenu(filteredDishes) {
+  menu.innerHTML = "";
+  filteredDishes.forEach((dish, index) => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.style.animation = `fadeIn 0.5s ease forwards ${index * 0.1}s`;
+
+    card.innerHTML = `
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="${dish.img}">
+          <h3>${dish.name}</h3>
+          <p>₹${dish.price}</p>
+        </div>
+        <div class="card-back">
+          <h3>${dish.name}</h3>
+          <p>₹${dish.price}</p>
+          <button onclick="addToCart()">Add to Cart</button>
+        </div>
+      </div>
+    `;
+
+    menu.appendChild(card);
+  });
+}
+
+function filterMenu() {
+  const category = document.getElementById("categoryFilter").value;
+  const price = document.getElementById("priceFilter").value;
+
+  let filtered = dishes.filter(dish => {
+    let categoryMatch = category === "all" || dish.type === category;
+
+    let priceMatch = true;
+    if (price === "low") priceMatch = dish.price < 200;
+    else if (price === "mid") priceMatch = dish.price >= 200 && dish.price <= 400;
+    else if (price === "high") priceMatch = dish.price > 400;
+
+    return categoryMatch && priceMatch;
+  });
+
+  renderMenu(filtered);
+}
+
+function addToCart() {
+  cart++;
+  cartCount.textContent = cart;
+}
+
+document.getElementById("categoryFilter").addEventListener("change", filterMenu);
+document.getElementById("priceFilter").addEventListener("change", filterMenu);
+
+renderMenu(dishes);
+</script>
+
+</body>
+</html>
