@@ -141,8 +141,8 @@ button:hover {
 <div class="controls">
   <select id="categoryFilter">
     <option value="all">All</option>
-    <option value="veg">Veg</option>
-    <option value="nonveg">Non-Veg</option>
+    <option value="Starter">Starter</option>
+    <option value="Mains">Mains</option>
   </select>
 
   <select id="priceFilter">
@@ -158,21 +158,22 @@ button:hover {
 
 <script>
 const dishes = [
-  {name:"Mater Paneer", type:"nonveg", price:450, img:"photo/images.jpg"},
-  {name:"Paneer Tikka", type:"veg", price:250, img:"photo/air-fryer-paneer-tikka-featured.jpg"},
-  {name:"Biryani", type:"nonveg", price:350, img:"photo/How-to-Make-Chicken-Biryani-Video.jpg"},
-  {name:"Masala Dosa", type:"veg", price:150, img:"photo/Masala-dosa-1.webp"},
-  {name:"Chole Bhature", type:"veg", price:180, img:"photo/MR-Chole-Bhature-featured-585x585.jpg"},
-  {name:"Dal Makhani", type:"veg", price:220, img:"photo/Dal-Makhani-Blog.jpg"},
-  {name:"Rogan Josh", type:"nonveg", price:500, img:"photo/Rogan_Josh_Kashmiri.jpg"},
-  {name:"Samosa", type:"veg", price:50, img:"photo/samosa-recipe.jpg"},
-  {name:"Pav Bhaji", type:"veg", price:160, img:"photo/images (1).jpg"},
-  {name:"Malai chap", type:"nonveg", price:400, img:""},
-  {name:"Rajma Chawal", type:"veg", price:140, img:"photo/rajma-chawal-1-500x500.jpg"},
-  {name:"Kadhi Pakora", type:"veg", price:180, img:"photo/images (2).jpg"},
-  {name:"Aloo Paratha", type:"veg", price:120, img:"photo/images (3).jpg"},
-  {name:"Gulab Jamun", type:"veg", price:100, img:"photo/download.jpg"},
-  {name:"Rasmalai", type:"veg", price:120, img:"photo/Rosmalai).jpg"}
+  {name:"Mater Paneer", type:"Mains", price:450, img:"photo/images.jpg"},
+  {name:"Paneer Tikka", type:"Starter", price:250, img:"photo/air-fryer-paneer-tikka-featured.jpg"},
+  {name:"Biryani", type:"Mains", price:350, img:"photo/How-to-Make-Chicken-Biryani-Video.jpg"},
+  {name:"Masala Dosa", type:"Starter", price:150, img:"photo/Masala-dosa-1.webp"},
+  {name:"Chole Bhature", type:"Starter", price:180, img:"photo/MR-Chole-Bhature-featured-585x585.jpg"},
+  {name:"Dal Makhani", type:"Starter", price:220, img:"photo/Dal-Makhani-Blog.jpg"},
+  {name:"Rogan Josh", type:"Mains", price:500, img:"photo/Rogan_Josh_Kashmiri.jpg"},
+  {name:"Samosa", type:"Starter", price:50, img:"photo/samosa-recipe.jpg"},
+  {name:"Pav Bhaji", type:"Starter", price:160, img:"photo/images (1).jpg"},
+  {name:"Malai chap", type:"Starter", price:400, img:"photo/malai-chaap-recipe-at-home.jpg"},
+  {name:"Rajma Chawal", type:"Mains", price:140, img:"photo/rajma-chawal-1-500x500.jpg"},
+  {name:"Kadhi Pakora", type:"Mains", price:180, img:"photo/images (2).jpg"},
+  {name:"Aloo Paratha", type:"Starter", price:120, img:"photo/images (3).jpg"},
+  {name:"Gulab Jamun", type:"Starter", price:100, img:"photo/download.jpg"},
+  {name:"Rasmalai", type:"Starter", price:120, img:"photo/Rosmalai).jpg"}
+    {name:"Tandoori roti", type:"Mains", price:120, img:"photo/tanduri.jpg"}
 ];
 
 let cart = 0;
